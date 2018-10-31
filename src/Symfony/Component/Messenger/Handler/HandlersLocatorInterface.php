@@ -9,17 +9,21 @@
  * file that was distributed with this source code.
  */
 
-namespace Symfony\Component\Messenger\Middleware;
+namespace Symfony\Component\Messenger\Handler;
 
 /**
+ * Maps a message to a list of handlers.
+ *
  * @author Nicolas Grekas <p@tchwork.com>
  *
  * @experimental in 4.2
  */
-interface StackInterface
+interface HandlersLocatorInterface
 {
     /**
-     * Returns the next middleware to process a message.
+     * Returns the handlers for the given message name.
+     *
+     * @return iterable|callable[]
      */
-    public function next(): MiddlewareInterface;
+    public function getHandlers(string $name): iterable;
 }
